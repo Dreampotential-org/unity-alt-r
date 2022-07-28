@@ -3,30 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using Dissonance;
 using Photon.Pun;
+using Dissonance.Audio;
 
 
 public class VoiceTriggerSetting : MonoBehaviour
 {
-
-
-    PhotonView PV;
+    public PhotonView PV;
     float currentVolume;
+    
 
     // Start is called before the first frame update
     void Awake()
     {
-        PV = this.gameObject.GetComponent<PhotonView>();
-        if (PV.IsMine)
+        //PV = this.gameObject.GetComponent<PhotonView>();
+        //if (PV.IsMine)
         {
-            Destroy(this.gameObject.GetComponent<VoiceReceiptTrigger>());
-            Destroy(this.gameObject.GetComponent<VoiceBroadcastTrigger>()); 
+           // Destroy(this.gameObject.GetComponent<VoiceReceiptTrigger>());
+          //  Destroy(this.gameObject.GetComponent<VoiceBroadcastTrigger>()); 
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!PV.IsMine)
+        if (PV.IsMine)
         {
             AmplitudeMeter();
         }

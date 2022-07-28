@@ -9,8 +9,6 @@ using UnityEngine.UI;
 using TMPro;
 public class VoiceChatSetting : MonoBehaviour
 {
-
-   // public AecmRoutingMode a;
     public Dropdown audioQualityDropDown;
     public Dropdown noiseSuspensionDropDown;
     public Dropdown voiceDetectionSensitivity;
@@ -23,18 +21,23 @@ public class VoiceChatSetting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        initialVoiceSetting();
-        populateAudioQuality();
-        populateNoiseSuspension();
-        populatevoiceDetectionSensitivity();
-        populateEchoCancellation();
-        assignVoiceSetting();
+        voiceSettingOnPlay();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void voiceSettingOnPlay ()
+    {
+        initialVoiceSetting();
+        populateAudioQuality();
+        populateNoiseSuspension();
+        populatevoiceDetectionSensitivity();
+        populateEchoCancellation();
+        assignVoiceSetting();
     }
 
     public void populateAudioQuality ()
@@ -178,6 +181,26 @@ public class VoiceChatSetting : MonoBehaviour
             PlayerPrefs.SetInt("echoCancellation", 3);
             PlayerPrefs.SetFloat("SoundRemovalIntensityText", 0.85f);
             PlayerPrefs.SetInt("VoiceSetting", 1);
+        }
+    }
+
+    public void resetVoiceSetting()
+    {
+        PlayerPrefs.SetInt("VoiceSetting", 0);
+
+        if (PlayerPrefs.GetInt("VoiceSetting") == 0)
+        {
+            PlayerPrefs.SetInt("voiceDetectionSensitivity", 0);
+            PlayerPrefs.SetInt("noiseSuspensionDropDown", 2);
+            PlayerPrefs.SetInt("audioQualityDropDown", 2);
+            PlayerPrefs.SetInt("echoCancellation", 3);
+            PlayerPrefs.SetFloat("SoundRemovalIntensityText", 0.85f);
+            PlayerPrefs.SetInt("VoiceSetting", 1);
+            populateAudioQuality();
+            populateNoiseSuspension();
+            populatevoiceDetectionSensitivity();
+            populateEchoCancellation();
+            assignVoiceSetting();
         }
     }
 

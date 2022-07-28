@@ -2,6 +2,6 @@
 {
     internal interface IAmplitudeProvider
     {
-        float Amplitude { get; }
+        public float Amplitude { get; }
     }
 }

@@ -13,11 +13,17 @@ public class GameManager : MonoBehaviour
         {
             gameManager = this;
             DontDestroyOnLoad(this.gameObject);
+            initVoiceChatSetting();
         }
         else
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void initVoiceChatSetting ()
+    {
+        PlayerPrefs.SetInt("VoiceSetting", 0);
     }
  
 }
